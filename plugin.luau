@@ -3,6 +3,8 @@ A simple plugin to scan the game for invalid sound IDs and changes the audios so
 Preventing a bunch of sound ID errors in your console.
 
 https://github.com/zv8001/Invalid-sound-ID-scanner./
+
+Made by z3ck200 / ZV800
 ]]
 
 local ChangeHistoryService = game:GetService("ChangeHistoryService")

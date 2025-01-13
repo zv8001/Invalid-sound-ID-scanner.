@@ -19,8 +19,9 @@ local function OnClick() --This function checks for invalid sound IDs
 		if child:IsA("Sound") then
 			if child.TimeLength == 0 then --Checks to see if the sound is invalid.
 				if child.SoundId ~= "" then --Makes sure it's not repeating Sounds.
-					warn("Changing sound ID to nil: " .. child.SoundId)
+					warn("Changing sound ID to nil: " .. child.SoundId .. " | FileName: " .. child.Name)
 					child.SoundId = "" --set the sound ID to nothing
+				
 				end
 			end
 		end

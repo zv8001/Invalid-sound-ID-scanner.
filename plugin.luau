@@ -12,20 +12,30 @@ local Selection = game:GetService("Selection")
 local toolbar = plugin:CreateToolbar("Remove console sound errors")
 local OpenGUIButton = toolbar:CreateButton("Remove console sound errors", "Remove console sound errors", "rbxassetid://6745884818")
 
-local function OnClick() --This function checks for invalid sound IDs 
+
+local function OnClick() --This function checks for invalid sound IDs
+	local Count=0
 	warn("Removing invalid sound IDs please wait...")
 	local children = game:GetDescendants()
 	for i, child in ipairs(children) do
 		if child:IsA("Sound") then
 			if child.TimeLength == 0 then --Checks to see if the sound is invalid.
 				if child.SoundId ~= "" then --Makes sure it's not repeating Sounds.
+					Count+=1
 					warn("Changing sound ID to nil: " .. child.SoundId .. " | FileName: " .. child.Name)
 					child.SoundId = "" --set the sound ID to nothing
-				
 				end
 			end
 		end
 	end
-	warn("Done")
+	
+	local idtext = "IDs"
+	if Count == 1 then idtext = "ID" end
+	if Count == 0 then
+		warn("No invalid sound IDs found.")
+	else
+		warn("Done! Reset: " .. Count .. " Sound " ..idtext)
+	end
+	
 end
 OpenGUIButton.Click:Connect(OnClick)
